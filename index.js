@@ -1,6 +1,7 @@
 const postForm = document.getElementById("post-form");
 const postContent = document.getElementById("post-content");
 const postList = document.getElementById("post-list");
+const profileSection = document.getElementById("profile");
 
 postForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -11,19 +12,45 @@ postForm.addEventListener("submit", function (event) {
     }
 });
 
-function createTweet(content) {
-    const tweetElement = document.createElement("div");
-    tweetElement.classList.add("tweet");
-    tweetElement.innerHTML = `
-        <p class="tweet-content">${content}</p>
-        <div class="tweet-meta">
-            <span class="tweet-date">${formatDate(new Date())}</span>
+// Sample user profile data (simplified)
+const userProfile = {
+    name: "Abvss",
+    username: "abvss1300",
+    bio: "Front-end developer | Coffee enthusiast",
+    profileImage: "https://via.placeholder.com/50",
+    following: 42,
+    followers: 238,
+};
+
+function showUserProfile() {
+    const profileHtml = `
+        <img src="${userProfile.profileImage}" alt="Profile Image">
+        <div>
+            <h2>${userProfile.name}</h2>
+            <p>@${userProfile.username}</p>
+            <p>${userProfile.bio}</p>
+            <p>${userProfile.following} Following - ${userProfile.followers} Followers</p>
         </div>
     `;
-    postList.prepend(tweetElement);
+    profileSection.innerHTML = profileHtml;
 }
 
-function formatDate(date) {
-    const options = { year: "numeric", month: "short", day: "numeric" };
-    return date.toLocaleDateString("en-US", options);
+showUserProfile();
+
+// ... (same as before) ...
+
+// Function to toggle follow/unfollow
+function toggleFollow() {
+    const followButton = document.getElementById("follow-button");
+    userProfile.following = followButton.classList.contains("active") ? userProfile.following - 1 : userProfile.following + 1;
+    followButton.classList.toggle("active");
+    showUserProfile();
 }
+
+// Add follow/unfollow button to profile section
+const followButtonHtml = `
+    <button id="follow-button" class="${userProfile.following > 0 ? 'active' : ''}" onclick="toggleFollow()">
+        ${userProfile.following > 0 ? 'Unfollow' : 'Follow'}
+    </button>
+`;
+profileSection.insertAdjacentHTML("beforeend", followButtonHtml);
