@@ -8,10 +8,11 @@ body, h1, h2, h3, p {
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f5f8fa;
 }
 
 header {
-    background-color: #333;
+    background-color: #00acee;
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -25,6 +26,10 @@ main {
 
 #post-form {
     margin-bottom: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #post-content {
@@ -32,10 +37,13 @@ main {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 1rem;
+    resize: none;
+    font-size: 1rem;
 }
 
 #post-button {
-    background-color: #333;
+    background-color: #00acee;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -44,19 +52,25 @@ main {
 }
 
 #post-button:hover {
-    background-color: #555;
+    background-color: #0087be;
 }
 
-/* Styling for posts */
-.post {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    background-color: #fff;
+/* Styling for tweets */
+.tweet {
+    background-color: white;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
-.post-content {
+.tweet-content {
     white-space: pre-line;
+    margin-top: 0.5rem;
+}
+
+.tweet-meta {
+    margin-top: 0.5rem;
+    color: #657786;
+    font-size: 0.9rem;
 }
